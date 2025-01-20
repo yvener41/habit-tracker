@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Habit Tracker 509</title>
+</head>
+<body>
+    <header>
+        <div class="logo">Habit Tracker 509</div>
+            <!-- <nav>
+                <a href="#home">Home</a>
+                <a href="#dashboard">Dashboard</a>
+                <a href="#about">About</a>
+            </nav> -->
+    </header>
+
+    <section id="home">
+         <h1>Welcome to Your Habit Tracker 😊</h1>
+         <p>" Small habits lead to big changes. "</p>
+         <button id="start-btn">Start Tracking</button>
+    </section>
+
+
+    <section id="dashboard">
+          <h2>Your Daily Habit Tracker</h2>
+          <div class="add-habit">
+             <input type="text" id="habit-input" placeholder="Enter a new habit" />
+             <button id="add-btn">Add Habit</button>
+          </div>
+          <div id="habit-list"></div>
+          <canvas id="progress-chart" width="200" height="100"></canvas>
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <p>This app helps you build and track habits effortlessly. Developed by Yvener Dutervil</p>
+    </section>
+
+    <footer>
+        <P>&copy; 2025 ImFullyStack</P>
+    </footer>
+    
+    <script src="app.js"></script>
+</body>
+</html>
