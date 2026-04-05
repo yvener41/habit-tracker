@@ -1,48 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HabitFlow — Daily Progress Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Habit Tracker 509</title>
 </head>
 <body>
+
+    <!-- ── Header ───────────────────────────────────── -->
     <header>
-        <div class="logo">Habit Tracker 509</div>
-            <!-- <nav>
-                <a href="#home">Home</a>
-                <a href="#dashboard">Dashboard</a>
-                <a href="#about">About</a>
-            </nav> -->
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">✦</span>
+                <span>HabitFlow</span>
+            </div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
     </header>
 
+    <!-- ── Hero ─────────────────────────────────────── -->
     <section id="home">
-         <h1>Welcome to Your Habit Tracker 😊</h1>
-         <p>" Small habits lead to big changes. "</p>
-         <button id="start-btn">Start Tracking</button>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <span class="hero-badge">Your Daily Companion</span>
+                <h1>Build Better Habits,<br><span class="gradient-text">Live Better</span></h1>
+                <p class="hero-sub">Track your daily habits, visualize your progress, and celebrate every milestone on your path to self-improvement.</p>
+                <button id="start-btn" class="btn btn-primary btn-lg">
+                    Start Tracking <span class="btn-arrow">→</span>
+                </button>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="hero-card-item done">☀️ Morning workout</div>
+                    <div class="hero-card-item done">📖 Read 20 pages</div>
+                    <div class="hero-card-item">💧 Drink 8 glasses</div>
+                    <div class="hero-card-item done">🧘 Meditate</div>
+                </div>
+            </div>
+        </div>
     </section>
 
-
+    <!-- ── Dashboard ────────────────────────────────── -->
     <section id="dashboard">
-          <h2>Your Daily Habit Tracker</h2>
-          <div class="add-habit">
-             <input type="text" id="habit-input" placeholder="Enter a new habit" />
-             <button id="add-btn">Add Habit</button>
-          </div>
-          <div id="habit-list"></div>
-          <canvas id="progress-chart" width="200" height="100"></canvas>
+        <div class="dashboard-inner">
+
+            <div class="dashboard-header">
+                <h2>Today's Habits</h2>
+                <p class="date-display" id="date-display"></p>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <span class="stat-number" id="stat-total">0</span>
+                    <span class="stat-label">Total</span>
+                </div>
+                <div class="stat-card stat-green">
+                    <span class="stat-number" id="stat-completed">0</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+                <div class="stat-card stat-amber">
+                    <span class="stat-number" id="stat-remaining">0</span>
+                    <span class="stat-label">Remaining</span>
+                </div>
+            </div>
+
+            <!-- Main Grid -->
+            <div class="dashboard-grid">
+
+                <!-- Habits Panel -->
+                <div class="habits-panel">
+                    <div class="add-habit-form">
+                        <input type="text" id="habit-input" placeholder="Add a new habit…" autocomplete="off">
+                        <button id="add-btn" class="btn btn-primary"><span>+</span> Add</button>
+                    </div>
+                    <div id="habit-list"></div>
+                    <p class="empty-state" id="empty-state">No habits yet. Add one above to get started!</p>
+                </div>
+
+                <!-- Chart Panel -->
+                <div class="chart-panel">
+                    <p class="chart-title">Progress</p>
+                    <div class="chart-wrapper">
+                        <canvas id="progress-chart"></canvas>
+                        <div class="chart-center-text">
+                            <span id="chart-percent">0%</span>
+                            <small>done</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </section>
 
+    <!-- ── About ─────────────────────────────────────── -->
     <section id="about">
-        <h2>About</h2>
-        <p>This app helps you build and track habits effortlessly. Developed by Yvener Dutervil</p>
+        <div class="about-inner">
+            <h2>About HabitFlow</h2>
+            <p>HabitFlow helps you build and track habits effortlessly. Your data is saved locally — private and always available. Developed by <strong>Yvener Dutervil</strong>.</p>
+            <div class="about-features">
+                <div class="feature"><span>🔒</span><p>100% Private</p></div>
+                <div class="feature"><span>📊</span><p>Visual Progress</p></div>
+                <div class="feature"><span>💾</span><p>Auto-Saved</p></div>
+            </div>
+        </div>
     </section>
 
+    <!-- ── Footer ────────────────────────────────────── -->
     <footer>
-        <P>&copy; 2025 ImFullyStack</P>
+        <div class="footer-inner">
+            <span class="logo-small">✦ HabitFlow</span>
+            <p>&copy; 2025 ImFullyStack · All rights reserved</p>
+        </div>
     </footer>
-    
+
+    <!-- Toast -->
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <!-- Congratulations Modal -->
+    <div id="congrats-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal">
+            <div class="modal-icon">🎉</div>
+            <h3>All Done!</h3>
+            <p>You've completed all your habits for today. Incredible work — keep it up!</p>
+            <button class="btn btn-primary" id="modal-close">Keep going!</button>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
