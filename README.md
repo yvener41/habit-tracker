@@ -24,6 +24,31 @@ JavaScript (ES6): For dynamic functionality and interactivity.
 
 Chart.js: For visualizing progress using a doughnut chart.
 
+Getting Started :
+
+Prerequisites: A terminal and Python 3 (pre-installed on most systems) or any static file server.
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yvener41/habit-tracker.git
+cd habit-tracker
+```
+
+2. Start the app:
+
+```bash
+python3 -m http.server 8000
+```
+
+3. Open your browser and navigate to:
+
+```
+http://localhost:8000
+```
+
+The app runs entirely in the browser — no build step or dependencies to install.
+
 Future Enhancements :
 
 Add notifications to remind users to complete their habits.
